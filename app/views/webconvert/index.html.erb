@@ -1,0 +1,15 @@
+<div>
+  <h1>Конвертер SVG в PDF</h1>
+
+  <%= form_with url: 'webconvert#create', method: :post do |f| %>
+    <div>
+      <%= f.label :svg_file, "SVG файл" %>
+      <%= f.file_field :svg_file, accept: '.svg', required: true %>
+    </div>
+
+    <div>
+      <button type="submit">Конвертировать в PDF</button>
+    </div>
+  <% end %>
+
+</div>

@@ -1,6 +1,6 @@
 RSpec.describe CreatePdfService do
   describe "#call" do
-    subject(:convert_to_pdf) { described_class.new(file).call }
+    subject(:convert_to_pdf) { described_class.new(file, "127.0.0.1").call }
 
     let(:file) { file_fixture("test.svg").open }
 
