@@ -1,6 +1,7 @@
 class CreatePdfService
-  def initialize(svg_file)
+  def initialize(svg_file, base_url)
     @svg_file = svg_file
+    @base_url = base_url
   end
 
   def call
@@ -61,5 +62,6 @@ class CreatePdfService
         end
       end
     end
+    "#{@base_url}/pdf_reports/#{filename}"
   end
 end
