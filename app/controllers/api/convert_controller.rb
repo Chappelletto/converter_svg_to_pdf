@@ -10,9 +10,7 @@ class Api::ConvertController < ApplicationController
       return
     end
 
-    file_url = CreatePdfService.new(svg_file.tempfile, base_url).call
-    # send_data result_pdf, filename: "converted.pdf", type: "application/pdf", disposition: "attachment"
-
-    render plain: "PDF доступен по ссылке: #{file_url}"
+    result_pdf = CreatePdfService.new(svg_file.tempfile, base_url).call
+    send_data result_pdf, filename: "converted.pdf", type: "application/pdf", disposition: "attachment"
   end
 end

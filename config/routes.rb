@@ -11,9 +11,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  namespace :api do
-    post "create", to: "convert#create"
-  end
 
-  resources :webconvert, only: [:index, :create]
+  post "api/create", to: "api/convert#create"
+
+  resources :document, only: [:index, :create]
+
+  get "download_pdf", to: "document#download_pdf"
 end

@@ -10,8 +10,8 @@ class CreatePdfService
     FileUtils.mkdir_p(output_dir) unless Dir.exist?(output_dir)
 
     # Имя файла (можно генерировать динамически)
-    filename = "report_#{Time.now.strftime("%Y-%m-%d_%H-%M")}.pdf"
-    filepath = File.join(output_dir, filename)
+    @filename = "report_#{Time.now.strftime("%Y-%m-%d_%H-%M")}.pdf"
+    filepath = File.join(output_dir, @filename)
 
     Prawn::Document.generate(filepath) do |pdf|
       pdf.svg @svg_file, width: 500
@@ -62,6 +62,6 @@ class CreatePdfService
         end
       end
     end
-    "#{@base_url}/pdf_reports/#{filename}"
+    @filename
   end
 end
