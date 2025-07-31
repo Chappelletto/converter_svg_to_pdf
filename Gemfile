@@ -19,9 +19,6 @@ gem "jbuilder"
 gem "prawn"
 gem "prawn-svg"
 
-gem "capistrano", "~> 3.9"
-gem "capistrano-rbenv", "~> 2.2"
-
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -61,7 +58,11 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "capistrano", "~> 3.9"
+  gem "capistrano-rbenv", "~> 2.2"
   gem "capistrano-rails", "~> 1.3", require: false
+  gem "capistrano-passenger"
+  gem "capistrano-bundler"
 end
 
 group :test do
