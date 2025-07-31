@@ -34,3 +34,6 @@
 /config/master.key
 
 /public/pdf_reports/*
+
+/config/databases.yml
+/config/secrets.yml
