@@ -1,19 +1,10 @@
 class CreatePdfService
-  def initialize(svg_file, base_url)
+  def initialize(svg_file)
     @svg_file = svg_file
-    @base_url = base_url
   end
 
   def call
-    # Путь к папке (если её нет, она будет создана)
-    output_dir = Rails.root.join("public", "pdf_reports") # Пример: /ваш_проект/public/pdf_reports
-    FileUtils.mkdir_p(output_dir) unless Dir.exist?(output_dir)
-
-    # Имя файла (можно генерировать динамически)
-    @filename = "report_#{Time.now.strftime("%Y-%m-%d_%H-%M")}.pdf"
-    filepath = File.join(output_dir, @filename)
-
-    Prawn::Document.generate(filepath) do |pdf|
+    Prawn::Document.generate("output.pdf") do |pdf|
       pdf.svg @svg_file, width: 500
 
       # Добавляем метки обрезки по углам (линии 10x10 мм)
@@ -62,6 +53,5 @@ class CreatePdfService
         end
       end
     end
-    @filename
   end
 end

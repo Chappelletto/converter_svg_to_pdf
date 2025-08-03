@@ -1,18 +1,12 @@
-<div>
+<div class="container">
   <h1>Конвертер SVG в PDF</h1>
-
-  <%= form_with url: 'document#create', method: :post do |f| %>
-    <div>
-      <%= f.label :svg_file, "SVG файл" %>
-      <%= f.file_field :svg_file, accept: '.svg', required: true %>
+  
+  <%= form_with model: @document, url: "document/create", local: true, html: { multipart: true } do |f| %>
+    <div class="form-group">
+      <%= f.label :svg_file, "Выберите SVG файл" %>
+      <%= f.file_field :svg_file, accept: '.svg', required: true, class: "form-control" %>
     </div>
-
-    <div>
-      <button type="submit">Конвертировать в PDF</button>
-      
-    </div>
+    
+    <%= f.submit "Конвертировать", class: "btn btn-primary", data: { turbo: false} %>
   <% end %>
-
-  <%= link_to "Download", download_pdf_path, class: "custom-button" %>
-
 </div>
