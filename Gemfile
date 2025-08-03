@@ -16,8 +16,6 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
-gem "prawn"
-gem "prawn-svg"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -30,6 +28,16 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+gem "active_storage_dashboard"
+gem "prawn"
+gem "prawn-svg"
+gem "mini_magick"
+gem "image_processing"
+
+gem "combine_pdf"
+
+gem "aws-sdk-s3", require: false
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
@@ -40,7 +48,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
+# gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -51,18 +59,12 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-
   gem "standard", ">= 1.35.1"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem "capistrano", "~> 3.9"
-  gem "capistrano-rbenv", "~> 2.2"
-  gem "capistrano-rails", "~> 1.3", require: false
-  gem "capistrano-passenger"
-  gem "capistrano-bundler"
 end
 
 group :test do

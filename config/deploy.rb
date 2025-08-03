@@ -6,7 +6,7 @@ set :repo_url, "git@github.com:Chappelletto/converter_svg_to_pdf.git"
 set :deploy_to, "/var/www/converter_svg_to_pdf"
 set :rbenv_type, :user # or :system, or :fullstaq (for Fullstaq Ruby), depends on your rbenv setup
 set :rbenv_ruby, File.read(".ruby-version").strip
-
+set :branch, "main"
 # in case you want to set ruby version from the file:
 # set :rbenv_ruby, File.read('.ruby-version').strip
 
@@ -15,6 +15,22 @@ set :rbenv_map_bins, %w[rake gem bundle ruby rails]
 set :rbenv_roles, :all # default value
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :deploy_via, :copy
+set :copy_dir, "/tmp/deploy"
+# set :user, "deploy"
+# set :ssh_options, {
+#   user: "deploy",
+#   forward_agent: true
+# }
+set :deploy_to, "/var/www/converter_svg_to_pdf"
+namespace :deploy do
+  task :create_deploy_dir do
+    on roles(:all) do
+      execute :mkdir, "-p", fetch(:deploy_to)
+    end
+  end
+  before :starting, :create_deploy_dir
+end
 
 namespace :deploy do
   desc "Run seed"

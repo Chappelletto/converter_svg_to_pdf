@@ -14,7 +14,13 @@ Rails.application.routes.draw do
 
   post "api/create", to: "api/convert#create"
 
-  resources :document, only: [:index, :create]
+  post "document/create", to: "document#create", as: "document_create"
+  root to: "document#index"
 
-  get "download_pdf", to: "document#download_pdf"
+  Rails.application.routes.draw do
+    # IMPORTANT: Make sure the mount path does not contain any special characters
+    # Use a simple path like '/active-storage-dashboard' or '/storage-dashboard'
+    # This is crucial for proper URL generation
+    mount ActiveStorageDashboard::Engine, at: "/active-storage-dashboard"
+  end
 end
