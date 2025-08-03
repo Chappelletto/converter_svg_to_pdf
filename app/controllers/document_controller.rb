@@ -1,27 +1,26 @@
 class DocumentController < ApplicationController
   skip_before_action :verify_authenticity_token
   def index
+    @document = Document.new
   end
 
   def create
-    svg_file = params[:svg_file]
-    @base_url = request.base_url # Получаем базовый URL здесь
+    @document = Document.new
+    svg_file = params[:document][:svg_file] if params[:document]
 
     if svg_file.nil?
       render json: {error: "SVG файл не предоставлен"}, status: :bad_request
       return
     end
-    filename = CreatePdfService.new(svg_file.tempfile, @base_url).call
-    session[:generated_pdf] = filename
-  end
+    result_pdf = CreatePdfService.new(svg_file.tempfile).call
+    pdf_io = StringIO.new(result_pdf)
+    pdf_io.rewind
 
-  def download_pdf
-    filename = session[:generated_pdf]
-    file_path = Rails.root.join("public", "pdf_reports", filename)
-    if File.exist?(file_path)
-      send_file file_path, disposition: "attachment"
-    else
-      redirect_to root_path, alert: "Файл не найден"
-    end
+    @document.converted_pdf.attach(io: pdf_io,
+      filename: "converted_#{Time.now.to_i}.pdf",
+      content_type: "application/pdf")
+    @document.save
+
+    render json: url_for(@document.converted_pdf)
   end
 end

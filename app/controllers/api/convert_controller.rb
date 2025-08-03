@@ -2,15 +2,22 @@ class Api::ConvertController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    svg_file = params[:svg_file]
-    base_url = request.base_url # Получаем базовый URL здесь
+    @document = Document.new
+    svg_file = params[:document][:svg_file] if params[:document]
 
     if svg_file.nil?
       render json: {error: "SVG файл не предоставлен"}, status: :bad_request
       return
     end
+    result_pdf = CreatePdfService.new(svg_file.tempfile).call
+    pdf_io = StringIO.new(result_pdf)
+    pdf_io.rewind
 
-    result_pdf = CreatePdfService.new(svg_file.tempfile, base_url).call
-    send_data result_pdf, filename: "converted.pdf", type: "application/pdf", disposition: "attachment"
+    @document.converted_pdf.attach(io: pdf_io,
+      filename: "converted_#{Time.now.to_i}.pdf",
+      content_type: "application/pdf")
+    @document.save
+
+    render json: url_for(@document.converted_pdf)
   end
 end
