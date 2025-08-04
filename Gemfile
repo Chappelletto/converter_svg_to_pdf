@@ -48,6 +48,12 @@ gem "kamal", require: false
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
+gem "capistrano", "~> 3.17"
+gem "capistrano-rails"
+gem "capistrano-rbenv"
+gem "capistrano-bundler"
+gem "capistrano-passenger"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
