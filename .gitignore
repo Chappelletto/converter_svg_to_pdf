@@ -35,7 +35,7 @@
 
 /public/pdf_reports/*
 
-/config/database.yml
+# /config/database.yml
 /config/secrets.yml
 
 /config/storage.yml
