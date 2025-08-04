@@ -1,24 +1,6 @@
-# README
+# converter_svg_to_pdf
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API endpoint для генерации PDF документа из SVG файла. В итоговый PDF документ добавляются поля для обрезки и Watermark с именем. 
+API endpoint и Web форма отдают ссылку на файл.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Файлы храятся в  YandexStorage

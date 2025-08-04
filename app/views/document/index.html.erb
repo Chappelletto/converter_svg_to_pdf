@@ -1,12 +1,27 @@
-<div class="container">
-  <h1>Конвертер SVG в PDF</h1>
+<div class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+  <h1 class="text-3xl font-bold text-center text-blue-800 mb-6">Конвертер SVG в PDF</h1>
   
-  <%= form_with model: @document, url: "document/create", local: true, html: { multipart: true } do |f| %>
-    <div class="form-group">
-      <%= f.label :svg_file, "Выберите SVG файл" %>
-      <%= f.file_field :svg_file, accept: '.svg', required: true, class: "form-control" %>
+  <%= form_with model: @document, url: "document/create", local: true, html: { multipart: true, class: "space-y-6" } do |f| %>
+    <div class="space-y-2">
+      <%= f.label :svg_file, "Выберите SVG файл", class: "block text-sm font-medium text-gray-700" %>
+      <div class="mt-1 flex items-center">
+        <%= f.file_field :svg_file, accept: '.svg', required: true, 
+              class: "block w-full text-sm text-gray-500
+                     file:mr-4 file:py-2 file:px-4
+                     file:rounded-md file:border-0
+                     file:text-sm file:font-semibold
+                     file:bg-blue-50 file:text-blue-700
+                     hover:file:bg-blue-100" %>
+      </div>
     </div>
     
-    <%= f.submit "Конвертировать", class: "btn btn-primary", data: { turbo: false} %>
+    <div class="flex justify-center">
+      <%= f.submit "Конвертировать", 
+            class: "px-6 py-3 bg-blue-600 text-white font-medium rounded-md
+                   hover:bg-blue-700 focus:outline-none focus:ring-2
+                   focus:ring-blue-500 focus:ring-offset-2
+                   transition-colors duration-200",
+            data: { turbo: false } %>
+    </div>
   <% end %>
 </div>

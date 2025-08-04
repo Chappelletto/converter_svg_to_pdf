@@ -35,6 +35,7 @@ gem "mini_magick"
 gem "image_processing"
 
 gem "combine_pdf"
+gem "tailwindcss-rails"
 
 gem "aws-sdk-s3", require: false
 
