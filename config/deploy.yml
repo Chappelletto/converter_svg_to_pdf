@@ -1,7 +1,6 @@
 # Name of your application. Used to uniquely configure containers.
 service: converter_svg_to_pdf
 
-
 # Name of the container image.
 image: chappelletto/converter_svg_to_pdf
 
@@ -9,6 +8,8 @@ image: chappelletto/converter_svg_to_pdf
 servers:
   web:
     - 185.140.13.54
+
+#   -
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -38,6 +39,14 @@ registry:
 #   - converter_svg_to_pdf-db:/rails/db
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
+  # ACTIVE_STORAGE_SERVICE: yandex
+  # ACCESS_KEY_ID: 'ваш_ключ'
+  # SECRET_ACCESS_KEY: 'ваш_секрет'
+  # REGION: 'ru-central1'
+  # BUCKET: 'peter.storage'
+  # ENDPOINT: 'https://storage.yandexcloud.net'
+  # force_path_style: true
+
   secret:
     - RAILS_MASTER_KEY
   clear:

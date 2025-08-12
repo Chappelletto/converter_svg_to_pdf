@@ -28,6 +28,7 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+gem "dotenv-rails"
 gem "active_storage_dashboard"
 gem "prawn"
 gem "prawn-svg"
