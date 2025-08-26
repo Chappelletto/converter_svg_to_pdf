@@ -21,6 +21,10 @@ class DocumentController < ApplicationController
       content_type: "application/pdf")
     @document.save
 
-    render json: url_for(@document.converted_pdf)
+    # скачивание файла
+    send_data result_pdf, filename: "converted.pdf", type: "application/pdf", disposition: "attachment"
+
+    # отдать ссылку на файл
+    # render json: url_for(@document.converted_pdf)
   end
 end
