@@ -3,7 +3,7 @@ class Api::ConvertController < ApplicationController
 
   def create
     @document = Document.new
-    svg_file = params[:document][:svg_file] if params[:document]
+    svg_file = params[:svg_file]
 
     if svg_file.nil?
       render json: {error: "SVG файл не предоставлен"}, status: :bad_request
@@ -18,6 +18,6 @@ class Api::ConvertController < ApplicationController
       content_type: "application/pdf")
     @document.save
 
-    render json: url_for(@document.converted_pdf)
+    render json: url_for(@document.converted_pdf.url)
   end
 end
