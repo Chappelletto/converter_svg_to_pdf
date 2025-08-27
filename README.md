@@ -13,7 +13,6 @@ API endpoint для генерации PDF документа из SVG файл�
 * Файлы хранятся в YandexStorage.
 
 Rails 8.0.2
-
 ruby 3.3.0 (2023-12-25 revision 5124f9ac75) [x86_64-linux]
 
 Дополнительно плинаруется
