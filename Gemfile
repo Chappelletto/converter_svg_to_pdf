@@ -40,7 +40,7 @@ gem "combine_pdf"
 gem "tailwindcss-rails"
 
 gem "passenger"
-
+gem "blueprinter", ">= 0.30.0"
 gem "aws-sdk-s3", require: false
 
 # Reduces boot times through caching; required in config/boot.rb
