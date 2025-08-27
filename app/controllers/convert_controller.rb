@@ -1,4 +1,4 @@
-class DocumentController < ApplicationController
+class ConvertController < ApplicationController
   skip_before_action :verify_authenticity_token
   def index
     @document = Document.new

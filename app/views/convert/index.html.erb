@@ -1,7 +1,7 @@
 <div class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
   <h1 class="text-3xl font-bold text-center text-blue-800 mb-6">Конвертер SVG в PDF</h1>
   
-  <%= form_with model: @document, url: "document/create", local: true, html: { multipart: true, class: "space-y-6" } do |f| %>
+  <%= form_with model: @document, url: "convert/create", local: true, html: { multipart: true, class: "space-y-6" } do |f| %>
     <div class="space-y-2">
       <%= f.label :svg_file, "Выберите SVG файл", class: "block text-sm font-medium text-gray-700" %>
       <div class="mt-1 flex items-center">

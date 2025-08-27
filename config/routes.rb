@@ -11,11 +11,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  namespace :api do
+    resources :documents, only: [:create, :show, :index, :update, :destroy]
+  end
 
-  post "api/create", to: "api/convert#create"
+  # post "api/create", to: "api/document#create"
 
-  post "document/create", to: "document#create", as: "document_create"
-  root to: "document#index"
+  root to: "convert#index"
+  post "convert/create", to: "convert#create", as: "convert_create"
 
   Rails.application.routes.draw do
     # IMPORTANT: Make sure the mount path does not contain any special characters

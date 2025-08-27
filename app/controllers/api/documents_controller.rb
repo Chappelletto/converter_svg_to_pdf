@@ -1,4 +1,4 @@
-class Api::ConvertController < ApplicationController
+class Api::DocumentsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
@@ -19,6 +19,6 @@ class Api::ConvertController < ApplicationController
     @document.save
 
     # render json: url_for(@document.converted_pdf)
-    render json: DocumentBlueprint.render(@document, view_context: view_context)
+    render json: DocumentBlueprint.render(@document, view_context: view_context), status: :created
   end
 end
