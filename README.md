@@ -10,7 +10,8 @@ API endpoint для генерации PDF документа из SVG файл�
 * Реализованный функционал покрыт тестами RSpec.
 * Соблюдается REST.
 * Используются функции REST API, Service Object, ActiveStorage
-* Файлы хранятся в YandexStorage.
+* Для хранения файлов используется ActiveRecord, S3 хранилище YandexStorage.
+* Для сериализации используется Blueprint
 
 Rails 8.0.2
 ruby 3.3.0 (2023-12-25 revision 5124f9ac75) [x86_64-linux]
