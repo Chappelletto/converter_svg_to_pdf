@@ -18,6 +18,6 @@ class Api::ConvertController < ApplicationController
       content_type: "application/pdf")
     @document.save
 
-    render json: url_for(@document.converted_pdf.url)
+    render json: url_for(@document.converted_pdf)
   end
 end
