@@ -36,6 +36,10 @@ gem "prawn-svg"
 gem "mini_magick"
 gem "image_processing"
 
+gem "rswag-api"
+gem "rswag-ui"
+gem "rswag-specs"
+
 gem "combine_pdf"
 gem "tailwindcss-rails"
 
