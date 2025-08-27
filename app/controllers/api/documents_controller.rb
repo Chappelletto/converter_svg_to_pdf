@@ -21,4 +21,23 @@ class Api::DocumentsController < ApplicationController
     # render json: url_for(@document.converted_pdf)
     render json: DocumentBlueprint.render(@document, view_context: view_context), status: :created
   end
+
+  def index
+    @documents = Document.all
+    render json: DocumentBlueprint.render(@documents, view_context: view_context)
+  end
+
+  def show
+    @document = Document.find(params[:id])
+    render json: DocumentBlueprint.render(@document, view_context: view_context)
+  end
+
+  def update
+  end
+
+  def destroy
+    @document = Document.find(params[:id])
+    @document.destroy
+    head :no_content
+  end
 end
